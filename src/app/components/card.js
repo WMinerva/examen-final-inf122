@@ -8,6 +8,7 @@ function Card() {
   const [estado, setEstado] = useState("Estado");
   const [habilidad, setHabilidad] = useState("Habilidad");
   const [tipo, setTipo] = useState("Tipo");
+  const [tipos, setTipos] = useState("Tipos");
   const [altura, setAltura] = useState("Altura");
   const [peso, setPeso] = useState("Peso");
   const [habilidades, setHabilidades] = useState("Habilidades");
@@ -24,9 +25,11 @@ function Card() {
         setEstado(data.species.name);
         setHabilidad(data.abilities[0].ability.name);
         setTipo(data.types[0].type.name);
+        setTipos(data.types[1].type.name);
         setAltura(data.height);
         setPeso(data.weight);
         setHabilidades(data.abilities[0].ability.name);
+
         setHp(data.stats[0].base_stat);
         setAtaque(data.stats[1].base_stat);
         setDefensa(data.stats[2].base_stat);
@@ -46,11 +49,12 @@ function Card() {
         <div className={style.cardContainer}>
           <div className={style.description}>
             <h1>About</h1>
-            {/* <img className={style.vector} src="./img/Vector" /> */}
             <div className={style.linea}></div>
             <div className={style.about}>
               <p>Type</p>
-              <p className={style.pinfo}>{tipo}</p>
+              <p className={style.pinfo}>
+                {tipo}, {tipos}
+              </p>
               <p>Height</p>
               <p className={style.pinfo}>{altura}</p>
               <p>Weight</p>
